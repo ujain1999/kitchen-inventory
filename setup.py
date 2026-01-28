@@ -7,6 +7,7 @@ import getpass
 VENV_PATH = Path(".venv")
 ENV_FILE = Path(".env")
 REQUIRED_VARS = ["DISCORD_TOKEN", "GUILD_ID"]
+SERVICE_ACCOUNT_FILE = Path("service_account.json")
 
 def ensure_python():
     try:
@@ -77,10 +78,21 @@ def ensure_env():
 
     print("Note: If you need to change these values, edit the .env file directly.")
 
+def ensure_service_account():
+    if SERVICE_ACCOUNT_FILE.exists():
+        print("service_account.json found")
+        return
+
+    print("service_account.json not found")
+    print()
+    print("Please follow the instructions in the README to create it.")
+    print("Once created, place it in the project root as:")
+    print(f"  {SERVICE_ACCOUNT_FILE.resolve()}")
 
 
 if __name__ == "__main__":
     ensure_python()
     ensure_venv()
     ensure_env()
+    ensure_service_account()
     print("Setup complete.")

@@ -12,10 +12,6 @@ venv/
 .env
 .env.*
 
-# Replit
-.replit
-replit.nix
-
 # Google API credentials
 service_account.json
 credentials.json
